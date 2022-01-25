@@ -9,7 +9,7 @@ export default {
   methods: {
     register() {
       this.$router.push({
-        name: 'EventDetails',
+        name: 'EventDetails'
       })
     }
   }
