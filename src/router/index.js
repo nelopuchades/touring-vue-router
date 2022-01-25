@@ -5,8 +5,8 @@ import EventEdit from '@/views/event/Edit.vue'
 import EventRegister from '@/views/event/Register.vue'
 import EventLayout from '@/views/event/Layout.vue'
 import About from '@/views/About.vue'
-import NotFound from '@/views/NotFound.vue';
-import NetworkError from '@/views/NetworkError.vue';
+import NotFound from '@/views/NotFound.vue'
+import NetworkError from '@/views/NetworkError.vue'
 
 const routes = [
   {
