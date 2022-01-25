@@ -3,7 +3,7 @@ import EventList from '../views/EventList.vue'
 import EventDetails from '../views/event/Details.vue'
 import EventEdit from '../views/event/Edit.vue'
 import EventRegister from '../views/event/Register.vue'
-import EventLayout from '../views/event/Layout.vue';
+import EventLayout from '../views/event/Layout.vue'
 import About from '../views/About.vue'
 
 const routes = [

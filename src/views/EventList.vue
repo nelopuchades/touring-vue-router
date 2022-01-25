@@ -9,14 +9,15 @@
         :to="{ name: 'EventList', query: { page: page - 1 } }"
         rel="prev"
         v-if="page !== 1"
-      >&#60; Previous</router-link>
+        >&#60; Previous</router-link
+      >
 
       <router-link
         v-for="pag in pages"
         :key="pag"
         :to="{ name: 'EventList', query: { page: pag } }"
       >
-        {{pag}}
+        {{ pag }}
       </router-link>
 
       <router-link
@@ -24,7 +25,8 @@
         :to="{ name: 'EventList', query: { page: page + 1 } }"
         rel="next"
         v-if="hasNextPage"
-      >Next &#62;</router-link>
+        >Next &#62;</router-link
+      >
     </div>
   </div>
 </template>
@@ -32,7 +34,7 @@
 <script>
 import EventCard from '@/components/EventCard.vue'
 import EventService from '@/services/EventService.js'
-import { watchEffect } from 'vue';
+import { watchEffect } from 'vue'
 
 export default {
   name: 'EventList',
@@ -48,23 +50,23 @@ export default {
   },
   created() {
     watchEffect(() => {
-      this.events = null;
+      this.events = null
       EventService.getEvents(2, this.page)
-      .then(response => {
-        this.events = response.data
-        this.totalEvents = response.headers['x-total-count']
-      })
-      .catch(error => {
-        console.log(error)
-      })
-    });
+        .then(response => {
+          this.events = response.data
+          this.totalEvents = response.headers['x-total-count']
+        })
+        .catch(error => {
+          console.log(error)
+        })
+    })
   },
   computed: {
     totalPages() {
-      return Math.ceil(this.totalEvents / 2);
+      return Math.ceil(this.totalEvents / 2)
     },
     hasNextPage() {
-      return this.page < this.totalPages;
+      return this.page < this.totalPages
     },
     pages() {
       return Array.from({ length: this.totalPages }, (_, i) => i + 1)
