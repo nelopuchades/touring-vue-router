@@ -12,6 +12,14 @@
       >&#60; Previous</router-link>
 
       <router-link
+        v-for="pag in pages"
+        :key="pag"
+        :to="{ name: 'EventList', query: { page: pag } }"
+      >
+        {{pag}}
+      </router-link>
+
+      <router-link
         id="page-next"
         :to="{ name: 'EventList', query: { page: page + 1 } }"
         rel="next"
@@ -52,9 +60,14 @@ export default {
     });
   },
   computed: {
+    totalPages() {
+      return Math.ceil(this.totalEvents / 2);
+    },
     hasNextPage() {
-      const totalPages = Math.ceil(this.totalEvents / 2);
-      return this.page < totalPages;
+      return this.page < this.totalPages;
+    },
+    pages() {
+      return Array.from({ length: this.totalPages }, (_, i) => i + 1)
     }
   }
 }
@@ -69,7 +82,7 @@ export default {
 
 .pagination {
   display: flex;
-  width: 290px;
+  width: 400px;
 }
 
 .pagination a {
